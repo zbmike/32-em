@@ -8,7 +8,7 @@ class AuthHeader extends React.Component {
         const elements = currentUser ?
             (
                 <>
-                    <img src="" alt="user_thumbnail"/>
+                    <img src={window.userURL} alt={currentUser.username}/>
                     <ul>
                         <li><Link>Profile</Link></li>
                         <li><Link>Stats</Link></li>
