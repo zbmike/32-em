@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 
 import configureStore from "./store/store";
 import {login, logout, signup} from "./actions/session_actions";
+import Root from "./components/root"
 
 document.addEventListener("DOMContentLoaded", () => {
   const store = configureStore();
-  ReactDOM.render(<h1>Initializing 32em</h1>, 
+  ReactDOM.render(<Root store={store}/>, 
                   document.getElementById("root"));
 
   window.getState = store.getState;
