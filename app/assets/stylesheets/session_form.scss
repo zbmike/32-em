@@ -1,0 +1,90 @@
+.login {
+    padding: 24px;
+    width: 400px;
+    // height: 400px;
+    margin: 36px auto;
+    border: 1px solid rgb(238, 239,242);
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.signup {
+    padding: 24px;
+    width: 400px;
+    // height: 450px;
+    margin: 36px auto;
+    border: 1px solid rgb(238, 239,242);
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.signup > p {
+    color: gray;
+    font-size: 19px;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 24px;
+    word-break: break-word;
+}
+
+.session-form > h3 {
+    font-size: 24px;
+    margin: 0 auto;
+    font-weight: 200;
+    margin-bottom: 24px;
+}
+
+.session-form-footer {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.session-form label {
+    margin-bottom: 8px;
+}
+
+.session-form input {
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
+.session-form button {
+    height: 48px;
+    width: 100%;
+    border-radius: 24px;
+    background-color: #0870D1;
+    color: white;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 40px;
+}
+
+.session-form > span {
+    display: flex;
+    height: 32px;
+    align-items: center;
+}
+
+.error-message {
+    color: red;
+}
+
+.session-form .error-input {
+    border: 1px solid red;
+}
+
+.session-form a {
+    text-decoration: none;
+    margin-left: 5px;
+}

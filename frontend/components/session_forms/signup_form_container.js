@@ -5,8 +5,8 @@ import SessionForm from './session_form';
 const msp = state => ({
     formType: 'signup',
     headerText: 'Join 32em',
-    para: "Discover and share incredible photos, gain global exposure, and get paid for your work."
-    
+    para: "Discover and share incredible photos, gain global exposure, and get paid for your work.",
+    errors: state.errors.session
 });
 
 const mdp = dispatch => ({

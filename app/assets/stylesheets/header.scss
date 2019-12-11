@@ -1,0 +1,102 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 22px 32px;
+    z-index: 1000;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.header > h1 {
+    font-family: Helvetica;
+    font-size: 20px;
+}
+
+.auth-header {
+    display: flex;
+    align-items: center;
+}
+
+
+.user-thumb {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: 24px;
+}
+
+// .hidden {
+//     display: none;
+// }
+
+.messenger {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M24 0.75C24 0.49367 23.8691 0.255093 23.6529 0.117398C23.4366 -0.0202958 23.1651 -0.0380342 22.9328 0.0703641L0.432842 10.5703C0.154609 10.7002 -0.0163823 10.9865 0.00124378 11.293C0.0188698 11.5996 0.221553 11.8644 0.512835 11.9615L8.99999 14.7905V23.25C8.99999 23.5638 9.19542 23.8445 9.48978 23.9534C9.78414 24.0623 10.1152 23.9764 10.3194 23.7381L15.9912 17.121L23.0128 19.4615C23.2415 19.5377 23.4929 19.4994 23.6885 19.3584C23.8841 19.2174 24 18.9911 24 18.75V0.75ZM22.5 17.7094L15.9872 15.5385L11.1384 13.9222L22.5 2.56069V17.7094ZM19.7095 3.22989L9.54745 13.3919L2.77277 11.1337L19.7095 3.22989ZM10.5 21.2225V15.2905L14.4546 16.6088L10.5 21.2225Z' fill='%23222222'%3E%3C/path%3E%3C/svg%3E");
+    margin-left: 24px;
+}
+
+.notifications {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M19.8037 13.5C19.8037 13.6908 19.8416 13.8799 19.9154 14.0571L21.3245 17.4429C21.7346 18.4282 20.9796 19.5 19.8754 19.5H4.12457C3.0204 19.5 2.26538 18.4282 2.67545 17.4429L4.08463 14.0571C4.15838 13.8799 4.19626 13.6908 4.19626 13.5V9C4.19626 4.85786 7.69011 1.5 12 1.5C16.3099 1.5 19.8037 4.85786 19.8037 9V13.5ZM1.22634 16.8858L2.63552 13.5V9C2.63552 4.02944 6.82814 0 12 0C17.1719 0 21.3645 4.02944 21.3645 9V13.5L22.7737 16.8858C23.5938 18.8564 22.0838 21 19.8754 21H15.8239C15.4624 22.7117 13.8878 24 12.0001 24C10.1124 24 8.53784 22.7117 8.17632 21H4.12457C1.91623 21 0.406179 18.8564 1.22634 16.8858ZM9.79223 21C10.1136 21.8739 10.9808 22.5 12.0001 22.5C13.0195 22.5 13.8867 21.8739 14.208 21H9.79223ZM11.2197 4.5C9.92677 4.5 8.87862 5.50736 8.87862 6.75C8.87862 7.16421 8.52923 7.5 8.09824 7.5C7.66726 7.5 7.31787 7.16421 7.31787 6.75C7.31787 4.67893 9.0648 3 11.2197 3C11.6507 3 12.0001 3.33579 12.0001 3.75C12.0001 4.16421 11.6507 4.5 11.2197 4.5Z' fill='%23222222'%3E%3C/path%3E%3C/svg%3E");
+    margin-left: 24px;
+}
+
+.upload-button {
+    display: flex;
+    width: 124px;
+    height: 48px;
+    border-radius: 24px;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.upload-button:hover {
+    background-color: lightgray;
+}
+
+.upload-button > span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+
+.upload-arrow {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg' class='button-icon'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.66029 0.285116C8.29559 -0.0950387 7.70441 -0.0950387 7.33971 0.285116L0.302564 7.62259C0.0497699 7.86442 -0.0555065 8.23131 0.0283622 8.57817C0.112231 8.92503 0.371741 9.19603 0.70428 9.28399C1.03682 9.37196 1.38884 9.26275 1.62116 8.99953L7.06608 3.32224V15.0262C7.06608 15.564 7.48421 16 8 16C8.51579 16 8.93392 15.564 8.93392 15.0262V3.32224L14.3788 8.99953C14.6112 9.26275 14.9632 9.37196 15.2957 9.28399C15.6283 9.19603 15.8878 8.92503 15.9716 8.57817C16.0555 8.23131 15.9502 7.86442 15.6974 7.62259L8.66029 0.285116Z' fill='%23222222'%3E%3C/path%3E%3C/svg%3E");
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.auth-header > a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: bolder;
+}
+
+.auth-login {
+    font-size:16px;
+}
+
+.auth-signup {
+    font-size: 14px;
+    margin-left: 16px;
+    padding: 0 16px;
+    height: 32px;
+    border-radius: 16px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

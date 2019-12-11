@@ -8,35 +8,39 @@ class AuthHeader extends React.Component {
         const elements = currentUser ?
             (
                 <>
-                    <img src={window.userURL} alt={currentUser.username}/>
-                    <ul>
-                        <li><Link>Profile</Link></li>
-                        <li><Link>Stats</Link></li>
-                        <li><Link>Galleries</Link></li>
-                        <li><Link>Liked photos</Link></li>
-                        <li><Link>Manage Photos</Link></li>
-                        <li><Link>Licensing Manager</Link></li>
-                    </ul>
-                    <br/>
-                    <ul>
-                        <li><Link>Memberships</Link></li>
-                        <li><Link>Settings</Link></li>
-                        <li><Link>Support</Link></li>
-                        <li><button onClick={logout}>Log out</button></li>
-                    </ul>
-                    <svg></svg>
-                    <svg></svg>
-                    <Link>Upload</Link>
+                    <img src={window.userURL} alt={currentUser.username}
+                        className="user-thumb"/>
+                    <div className="user-dropdown hidden">
+                        <ul>
+                            <li><Link>Profile</Link></li>
+                            <li><Link>Stats</Link></li>
+                            <li><Link>Galleries</Link></li>
+                            <li><Link>Liked photos</Link></li>
+                            <li><Link>Manage Photos</Link></li>
+                            <li><Link>Licensing Manager</Link></li>
+                        </ul>
+                        <br/>
+                        <ul>
+                            <li><Link>Memberships</Link></li>
+                            <li><Link>Settings</Link></li>
+                            <li><Link>Support</Link></li>
+                            <li><button onClick={logout}>Log out</button></li>
+                        </ul>
+                    </div>
+                    <a className="messenger"/>
+                    <a className="notifications" />
+                    <Link className="upload-button" to="/photos/upload">
+                        <a className="upload-arrow"></a><span>Upload</span></Link>
                 </>
             ) :
             (
                 <>
-                    <Link to='/login'>Log in</Link>
-                    <Link to='/signup'>Sign Up</Link>
+                    <Link to='/login' className="auth-login">Log in</Link>
+                    <Link to='/signup' className="auth-signup">Sign Up</Link>
                 </>
             )
         return (
-            <div>{elements}</div>
+            <div className="auth-header">{elements}</div>
         )
     }
 }

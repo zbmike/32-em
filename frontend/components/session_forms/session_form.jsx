@@ -5,55 +5,101 @@ class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            password: ""
+            user: {
+                username: "",
+                password: ""
+            },
+            valid: {
+                username: true,
+                password: true
+            }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidUpdate(){
+        // debugger
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => this.setState({
-            username: "",
-            password: ""
-        }));
+        const {user} = this.state;
+        const userValid = Boolean(user.username); //if empty string then false
+        const passValid = Boolean(user.password);
+        const allValid = userValid && passValid;
+        debugger
+        if (allValid) {
+            const formUser = Object.assign({}, this.state.user);
+            this.props.processForm(formUser).then(() => this.setState({
+                user: {username: "",
+                password: ""}
+            }));
+        } else {
+            debugger
+            this.setState({
+                user,
+                valid: {
+                    username: userValid,
+                    password: passValid
+                }
+            })
+        }
     }
 
     updateState(type) {
         return (e) => {
+            const {user, valid} = this.state;
+            user[type] = e.target.value;
+            valid[type] = true;
             this.setState({
-                [type]: e.target.value
+                user,
+                valid
             });
         };
     }
 
     render() {
-        const buttonText = (this.props.formType === "login") ? 
+        const {formType, headerText, para, errors} = this.props;
+        const buttonText = (formType === "login") ? 
             "Log In" : "Sign Up";
-        const link = (this.props.formType === "login") ? 
-            (<div><p>Don't have an account?</p>
+        const link = (formType === "login") ? 
+            (<div className="session-form-footer"><p>Don't have an account? </p>
               <Link to="/signup">Sign up</Link></div>) : 
-            (<div><p>Already have an account?</p>
+            (<div className="session-form-footer"><p>Already have an account? </p>
               <Link to="/login">Log in</Link></div>)
+        const type = (formType === "login") ? "session-form login" : "session-form signup";
+        const errorList = errors? (
+            <div className="error-popup"><ul>
+                {errors.map((error, i) => (
+                    <li key={`error-${i}`}>{error}</li>
+                ))}
+            </ul></div>
+        ) : <div></div>
 
         return (
-            <form>
-                <h3>{this.props.headerText}</h3>
-                <p>{this.props.para}</p>
-                <label htmlFor="username">Email or Username*</label>
-                <input type="text" 
-                       onChange={this.updateState("username")} 
-                       value={this.state.username} 
-                       id="username"/>
-                <label htmlFor="password">Password</label>
-                <input type="password" 
-                       onChange={this.updateState("password")} 
-                       value={this.state.password} 
-                       id="password" />
-                <button onClick={this.handleSubmit}>{buttonText}</button>
-                {link}
-            </form>
+            <div>
+                <form className={type} onSubmit={this.handleSubmit}>
+                    <h3>{headerText}</h3>
+                    <p>{para}</p>
+                        <label htmlFor="username">Email or Username*</label>
+                        <input type="text" 
+                            onChange={this.updateState("username")} 
+                            value={this.state.username} 
+                            id="username"
+                            className={this.state.valid.username ? "" : "error-input"}/>
+                        <span className="error-message">{this.state.valid.username ? "" :"This field is required."}</span>
+                        <label htmlFor="password">Password*</label>
+                        <input type="password" 
+                            onChange={this.updateState("password")} 
+                            value={this.state.password} 
+                            id="password" 
+                            className={this.state.valid.password ? "": "error-input"}/>
+                        <span className="error-message">{this.state.valid.password ? "" :"This field is required."}</span>
+                    <button onClick={this.handleSubmit}>{buttonText}</button>
+                    {link}
+                </form>
+            {errorList}
+            </div>
         )
     }
 }

@@ -5,7 +5,8 @@ import SessionForm from './session_form';
 const msp = state => ({
     formType: 'login',
     headerText: 'Login to 32em',
-    para: ""
+    para: "",
+    errors: state.errors.session
 });
 
 const mdp = dispatch => ({
