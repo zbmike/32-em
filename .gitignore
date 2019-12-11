@@ -27,3 +27,4 @@
 /config/master.key
 
 bundle.js*
+.DS_Store
