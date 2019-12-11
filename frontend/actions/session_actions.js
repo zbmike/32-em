@@ -19,13 +19,19 @@ export const receiveSessionErrors = errors => ({
 });
 
 export const login = formUser => dispatch => (
-  SessionAPI.login(formUser).then(user => dispatch(receiveCurrentUser(user)))
+  SessionAPI.login(formUser).then(
+    user => dispatch(receiveCurrentUser(user)), 
+    errs=>dispatch(receiveSessionErrors(errs.responseJSON)))
 );
 
 export const logout = () => dispatch => (
-  SessionAPI.logout().then( () => dispatch(logoutCurrentUser()))
+  SessionAPI.logout().then(
+    () => dispatch(logoutCurrentUser()), 
+    errs=>dispatch(receiveSessionErrors(errs.responseJSON)))
 );
 
-export const signup = (formUser) => dispatch => (
-  SessionAPI.signup(formUser).then( user => dispatch(receiveCurrentUser(user)))
+export const signup = formUser => dispatch => (
+  SessionAPI.signup(formUser).then(
+    user => dispatch(receiveCurrentUser(user)), 
+    errs=>dispatch(receiveSessionErrors(errs.responseJSON)))
 );

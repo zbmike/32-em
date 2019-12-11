@@ -17,17 +17,12 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidUpdate(){
-        // debugger
-    }
-
     handleSubmit(e) {
         e.preventDefault();
         const {user} = this.state;
         const userValid = Boolean(user.username); //if empty string then false
         const passValid = Boolean(user.password);
         const allValid = userValid && passValid;
-        debugger
         if (allValid) {
             const formUser = Object.assign({}, this.state.user);
             this.props.processForm(formUser).then(() => this.setState({
@@ -35,7 +30,6 @@ class SessionForm extends React.Component {
                 password: ""}
             }));
         } else {
-            debugger
             this.setState({
                 user,
                 valid: {
@@ -68,12 +62,12 @@ class SessionForm extends React.Component {
             (<div className="session-form-footer"><p>Already have an account? </p>
               <Link to="/login">Log in</Link></div>)
         const type = (formType === "login") ? "session-form login" : "session-form signup";
-        const errorList = errors? (
-            <div className="error-popup"><ul>
+        const errorList = (errors.length !== 0) ? (
+            <div className="error-popup"><div><ul>
                 {errors.map((error, i) => (
                     <li key={`error-${i}`}>{error}</li>
                 ))}
-            </ul></div>
+            </ul></div></div>
         ) : <div></div>
 
         return (

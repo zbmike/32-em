@@ -30,7 +30,7 @@ class AuthHeader extends React.Component {
                     <a className="messenger"/>
                     <a className="notifications" />
                     <Link className="upload-button" to="/photos/upload">
-                        <a className="upload-arrow"></a><span>Upload</span></Link>
+                        <div className="upload-arrow"></div><span>Upload</span></Link>
                 </>
             ) :
             (

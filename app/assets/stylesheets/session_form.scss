@@ -8,6 +8,7 @@
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
+    box-sizing: border-box;
 }
 
 .signup {
@@ -20,14 +21,15 @@
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
+    box-sizing: border-box;
 }
 
 .signup > p {
     color: gray;
-    font-size: 19px;
+    font-size: 18px;
     margin-bottom: 24px;
     text-align: center;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     line-height: 24px;
     word-break: break-word;
 }
@@ -88,3 +90,38 @@
     text-decoration: none;
     margin-left: 5px;
 }
+
+.error-popup {
+    position:relative;
+    top:-790px;
+    display: flex;
+    justify-content: center;
+}
+
+.error-popup > div {
+    position: absolute;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    padding: 10px 15px;
+    background-color: white;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
+.error-popup > div > ul {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 10px;
+    background: red;
+    color: white;
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; top:-20px; }
+    10%, 90% { opacity: 1; top:0px;}
+  }
+  
+  @keyframes fadeinout {
+    0%,100% { opacity: 0; top:-20px; }
+    10%, 90% { opacity: 1; top:0px;}
+  }
