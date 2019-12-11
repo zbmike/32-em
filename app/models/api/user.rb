@@ -1,8 +1,8 @@
 class Api::User < ApplicationRecord
     validates :password, length: {minimum: 6, null: true}
-    validates :username, presence: true
-    validates :password_digest, presence: true
-    validates :session_token, presence: true
+    validates :username, presence: true, uniqueness: true
+    validates :password_digest, presence: true, uniqueness: true
+    validates :session_token, presence: true, uniqueness: true
   
     attr_reader :password
   

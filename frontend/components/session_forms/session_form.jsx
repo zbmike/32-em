@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
+        this.props.clearSessionErrors();
         this.state = {
             user: {
                 username: "",
@@ -20,7 +21,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const {user} = this.state;
-        const userValid = Boolean(user.username); //if empty string then false
+        const userValid = Boolean(user.username);
         const passValid = Boolean(user.password);
         const allValid = userValid && passValid;
         if (allValid) {
