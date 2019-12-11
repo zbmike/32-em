@@ -9,7 +9,8 @@ class AuthHeader extends React.Component {
             (
                 <>
                     <img src={window.userURL} alt={currentUser.username}
-                        className="user-thumb"/>
+                        className="user-thumb"
+                        onClick={logout}/>
                     <div className="user-dropdown hidden">
                         <ul>
                             <li><Link>Profile</Link></li>
