@@ -8,9 +8,15 @@
     box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.08);
 }
 
-.header > h1 {
+.header a {
+    text-decoration: none;
+}
+
+.header h1 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 200;
+    color: rgb(34,34,34);
 }
 
 .auth-header {
@@ -90,6 +96,10 @@
     font-size:16px;
 }
 
+.auth-login:hover {
+    color: rgb(41,141,248)
+}
+
 .auth-signup {
     font-size: 14px;
     margin-left: 16px;
@@ -100,4 +110,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.auth-signup:hover {
+    color: rgb(41,141,248)
 }

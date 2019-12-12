@@ -70,6 +70,8 @@
     font-size: 16px;
     font-weight: bolder;
     margin-bottom: 40px;
+    border: none;
+    outline:none;
 }
 
 .session-form > span {
@@ -96,9 +98,11 @@
     top:-790px;
     display: flex;
     justify-content: center;
+    border-radius: 5px;
 }
 
 .error-popup > div {
+    border-radius: 5px;
     position: absolute;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     padding: 10px 15px;
