@@ -1,7 +1,6 @@
 .login {
     padding: 24px;
     width: 400px;
-    // height: 400px;
     margin: 36px auto;
     border: 1px solid rgb(238, 239,242);
     display: flex;
@@ -14,7 +13,6 @@
 .signup {
     padding: 24px;
     width: 400px;
-    // height: 450px;
     margin: 36px auto;
     border: 1px solid rgb(238, 239,242);
     display: flex;
@@ -68,8 +66,8 @@
     background-color: #0870D1;
     color: white;
     font-size: 16px;
-    font-weight: bolder;
-    margin-bottom: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
     border: none;
     outline:none;
 }
@@ -78,6 +76,10 @@
     display: flex;
     height: 32px;
     align-items: center;
+}
+
+.session-form button:last-of-type{
+    margin-bottom: 40px;
 }
 
 .error-message {
@@ -94,11 +96,13 @@
 }
 
 .error-popup {
-    position:relative;
-    top:-790px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
     display: flex;
     justify-content: center;
-    border-radius: 5px;
+    z-index: 1500;
 }
 
 .error-popup > div {
@@ -106,6 +110,7 @@
     position: absolute;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     padding: 10px 15px;
+    border-radius: 5px;
     background-color: white;
     -webkit-animation: fadeinout 4s linear forwards;
     animation: fadeinout 4s linear forwards;
@@ -116,16 +121,17 @@
     font-weight: bolder;
     font-size: 14px;
     padding: 10px;
+    border-radius: 5px;
     background: red;
     color: white;
 }
 
 @-webkit-keyframes fadeinout {
     0%,100% { opacity: 0; top:-20px; }
-    10%, 90% { opacity: 1; top:0px;}
-  }
+    5%, 95% { opacity: 1; top:0px;}
+}
   
-  @keyframes fadeinout {
+@keyframes fadeinout {
     0%,100% { opacity: 0; top:-20px; }
-    10%, 90% { opacity: 1; top:0px;}
-  }
+    5%, 95% { opacity: 1; top:0px;}
+}

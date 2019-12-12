@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     handleSubmit(e) {
@@ -29,7 +30,8 @@ class SessionForm extends React.Component {
             this.props.processForm(formUser).then(() => this.setState({
                 user: {username: "",
                 password: ""}
-            }));
+            }), () => setTimeout(this.props.clearSessionErrors, 4000));
+
         } else {
             this.setState({
                 user,
@@ -39,6 +41,12 @@ class SessionForm extends React.Component {
                 }
             })
         }
+    }
+
+    demoLogin(e) {
+        e.preventDefault();
+        const user = { username: "zbmike", password:"123456"}
+        this.props.processForm(user);
     }
 
     updateState(type) {
@@ -63,13 +71,14 @@ class SessionForm extends React.Component {
             (<div className="session-form-footer"><p>Already have an account? </p>
               <Link to="/login">Log in</Link></div>)
         const type = (formType === "login") ? "session-form login" : "session-form signup";
-        const errorList = (errors.length !== 0) ? (
+        const errorList = (
             <div className="error-popup"><div><ul>
                 {errors.map((error, i) => (
                     <li key={`error-${i}`}>{error}</li>
                 ))}
             </ul></div></div>
-        ) : <div></div>
+        ) 
+        const demo = (<button onClick={this.demoLogin}>Demo Login</button>)
 
         return (
             <div>
@@ -91,9 +100,10 @@ class SessionForm extends React.Component {
                             className={this.state.valid.password ? "": "error-input"}/>
                         <span className="error-message">{this.state.valid.password ? "" :"This field is required."}</span>
                     <button onClick={this.handleSubmit}>{buttonText}</button>
+                    {formType === 'login' && demo}
                     {link}
                 </form>
-            {errorList}
+            {errors.length > 0 && errorList}
             </div>
         )
     }
