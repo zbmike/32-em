@@ -10,12 +10,14 @@ class AuthHeader extends React.Component {
     }
 
     clickDropdown() {
+        this.switched=false;
         this.setState({
             dropdown_open: !this.state.dropdown_open
         });
     }
 
     closeDropdown() {
+        this.switched=false;
         this.setState({
             dropdown_open: false
         });
@@ -31,11 +33,12 @@ class AuthHeader extends React.Component {
 
     render() {
         const { currentUser, logout } = this.props;
-        const { dropdown_open } = this.state;
+        if (!currentUser) this.switched=true;
         if (currentUser && this.switched) {
             this.switched = false;
             this.state.dropdown_open = false;
         };
+        const { dropdown_open } = this.state;
         const dropdown = (
             <div className="user-dropdown"
             ref={this.dropdownRef} >
