@@ -6,18 +6,15 @@ class AuthHeader extends React.Component {
         super(props);
         this.state = { dropdown_open: false };
         this.dropdownRef = React.createRef();
-        this.switched = true;
     }
 
     clickDropdown() {
-        this.switched=false;
         this.setState({
             dropdown_open: !this.state.dropdown_open
         });
     }
 
     closeDropdown() {
-        this.switched=false;
         this.setState({
             dropdown_open: false
         });
@@ -32,12 +29,8 @@ class AuthHeader extends React.Component {
     }
 
     render() {
-        const { currentUser, logout } = this.props;
-        if (!currentUser) this.switched=true;
-        if (currentUser && this.switched) {
-            this.switched = false;
-            this.state.dropdown_open = false;
-        };
+        const { currentUser, logout, openModal } = this.props;
+        if (!currentUser) this.state.dropdown_open = false;
         const { dropdown_open } = this.state;
         const dropdown = (
             <div className="user-dropdown"
@@ -64,8 +57,8 @@ class AuthHeader extends React.Component {
                     {dropdown}
                     <a className="messenger"/>
                     <a className="notifications" />
-                    <Link className="upload-button" to="/photos/upload">
-                        <div className="upload-arrow"></div><span>Upload</span></Link>
+                    <a className="upload-button" onClick={openModal}>
+                        <div className="upload-arrow"></div><span>Upload</span></a>
                 </>
             ) :
             (
