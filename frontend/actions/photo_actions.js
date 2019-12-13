@@ -15,5 +15,5 @@ export const receivePhoto = photo => ({
 
 export const createPhoto = photoFormData => dispatch => (
     PhotoAPI.createPhoto(photoFormData).then(
-        photo => dispatch(receiveCurrentUser(photo)))
+        photo => dispatch(receivePhoto(photo)))
 );
