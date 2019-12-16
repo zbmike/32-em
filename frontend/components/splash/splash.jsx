@@ -19,10 +19,10 @@ export default props => {
                     <div className="splash-image-container">
                         <img src={ window.churchURL } alt="church"
                             className="splash-image" width="300" height="300"/>
-                        <div className="splash-image-content">
+                        <Link to="/photos/3" className="splash-image-content">
                             <div className="grad" />
                             <div className="text">Photo by zbmike</div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 <div className="splash-image-unit">

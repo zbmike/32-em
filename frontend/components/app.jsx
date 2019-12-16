@@ -14,10 +14,10 @@ const App = () => (
         <UploadFormContainer />
         <header className="header">
           <Link to="/"><h1>32em</h1></Link>
-          <AuthHeader/>
+          <AuthHeader />
         </header>
       <main>
-        
+
         <Route exact path="/" component={Splash} />
         <Route path="/photos/:photoId" component={ShowPhotoContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
