@@ -11,6 +11,22 @@ class Api::User < ApplicationRecord
     has_many :photos,
        :foreign_key => "author_id", 
        :class_name => "Photo"
+
+    has_many :followeds,
+        :foreign_key => "followee_id",
+        :class_name => "Follow"
+
+    has_many :followed_by,
+        :through => "follows",
+        :source => "follower"
+
+    has_many :follows,
+        :foreign_key => "user_id",
+        :class_name => "Follow"
+
+    has_many :following,
+        :through => "followeds",
+        :source => "followee"
   
     def self.find_by_credentials(username, password)
       user = Api::User.find_by(username: username)

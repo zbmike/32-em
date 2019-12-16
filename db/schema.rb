@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_164724) do
+ActiveRecord::Schema.define(version: 2019_12_16_165734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 2019_12_11_164724) do
     t.index ["password_digest"], name: "index_api_users_on_password_digest", unique: true
     t.index ["session_token"], name: "index_api_users_on_session_token", unique: true
     t.index ["username"], name: "index_api_users_on_username", unique: true
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "followee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id", "user_id"], name: "index_follows_on_followee_id_and_user_id", unique: true
   end
 
   create_table "photos", force: :cascade do |t|

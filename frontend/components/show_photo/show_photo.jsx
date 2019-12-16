@@ -1,4 +1,5 @@
 import React from 'react';
+import { follow } from '../../util/follows_api_util';
 
 class ShowPhoto extends React.Component {
 
@@ -42,8 +43,36 @@ class ShowPhoto extends React.Component {
             "Urban Exploration",
             "Wedding"
         ]
-        const { photoFileUrl, title, timeAgo, description, category } = this.props.photo;
-        const { username } = this.props.author;
+        const { photoFileUrl, title, timeAgo, description, category, location } = this.props.photo;
+        const { username, id: photoAuthorId, followedBy } = this.props.author;
+        const { currentUserId, follow, unfollow, follows } = this.props;
+
+        let followButton
+        if (currentUserId === photoAuthorId) {
+            followButton = null;
+        } else if (followedBy.includes(currentUserId)) {
+            followButton = (
+                <>
+                    <p>&nbsp;•&nbsp;</p>
+                    <a onClick={() => {
+                const followsArray = Object.values(follows);
+                let fol;
+                for (let i = 0; i < followsArray.length; i++) {
+                    if (followsArray[i].followee_id === photoAuthorId && followsArray[i].user_id === currentUserId) {
+                        fol = followsArray[i];
+                        break;
+                    }
+                }
+                unfollow(fol)}}>
+                Unfollow</a>
+                </> )
+        } else {
+            followButton = ( 
+                <>
+                    <p>&nbsp;•&nbsp;</p>
+                    <a onClick={()=> follow({followee_id: photoAuthorId, user_id: currentUserId})}>Follow</a>
+                </> )
+        }
         return (
             <div className="show-photo">
                 <div className="show-photo-image-container">
@@ -58,8 +87,7 @@ class ShowPhoto extends React.Component {
                             <h2 className="show-photo-title">{title}</h2>
                             <div className="show-photo-author">
                                 <p>by { username } </p>
-                                <p>&nbsp;•&nbsp;</p>
-                                <a>Follow</a>
+                                {followButton}
                             </div>
                         </div>
                         <div className="show-photo-author-thumbnail">
@@ -67,9 +95,15 @@ class ShowPhoto extends React.Component {
                                 />
                         </div>
                     </div>
-                    <div className="show-photo-time">
-                        <div className="time-icon"></div>
-                        <p>{timeAgo}</p>
+                    <div className="show-photo-loc-time">
+                        <div className="show-photo-location">
+                            <div className="location-icon"></div>
+                            <p>{location}</p>
+                        </div>
+                        <div className="show-photo-time">
+                            <div className="time-icon"></div>
+                            <p>{timeAgo}</p>
+                        </div>
                     </div>
                     <div className="show-photo-description">
                         <p>{ description }</p>

@@ -14,7 +14,7 @@ class Api::PhotosController < ApplicationController
     end
 
     def show
-        @photo = Photo.find_by_id(params[:id])
+        @photo = Photo.includes(:author).find_by_id(params[:id])
         if @photo
             render :show
         else
