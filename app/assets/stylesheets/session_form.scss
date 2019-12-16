@@ -1,16 +1,12 @@
-.login {
-    padding: 24px;
-    width: 400px;
-    margin: 36px auto;
-    border: 1px solid rgb(238, 239,242);
+.session-form-container {
+    height: 95vh;
+    background-color: rgb(247, 248, 250);
     display: flex;
-    flex-direction: column;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: white;
-    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
 }
 
-.signup {
+.session-form {
     padding: 24px;
     width: 400px;
     margin: 36px auto;

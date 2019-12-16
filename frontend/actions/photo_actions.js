@@ -8,12 +8,17 @@ export const receivePhotos = photos => ({
     photos
 });
 
-export const receivePhoto = photo => ({
+export const receivePhoto = data => ({
     type: RECEIVE_PHOTO,
-    photo
+    data
 });
 
 export const createPhoto = photoFormData => dispatch => (
     PhotoAPI.createPhoto(photoFormData).then(
         photo => dispatch(receivePhoto(photo)))
+);
+
+export const fetchPhoto = photoId => dispatch => (
+    PhotoAPI.fetchPhoto(photoId).then(
+        data => dispatch(receivePhoto(data)))
 );

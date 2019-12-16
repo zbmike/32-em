@@ -13,7 +13,19 @@ class Api::PhotosController < ApplicationController
         end
     end
 
+    def show
+        @photo = Photo.find_by_id(params[:id])
+        if @photo
+            render :show
+        else
+            render json: ['Photo not found.'], status: 404
+        end
+    end
+
+    private
+
     def photo_params
-        params.require(:photo).permit(:title, :description, :photo_file, :location, :category, :author_id)
+        params.require(:photo).permit(:title, :description, :photo_file, 
+                                      :location, :category, :author_id)
     end
 end

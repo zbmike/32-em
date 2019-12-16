@@ -81,7 +81,7 @@ class SessionForm extends React.Component {
         const demo = (<button onClick={this.demoLogin}>Demo Login</button>)
 
         return (
-            <div>
+            <div className="session-form-container">
                 <form className={type} onSubmit={this.handleSubmit}>
                     <h3>{headerText}</h3>
                     <p>{para}</p>

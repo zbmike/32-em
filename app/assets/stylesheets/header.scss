@@ -10,6 +10,7 @@
     top:0;
     left:0;
     right:0;
+    background-color: white;
 }
 
 .header a {
@@ -72,7 +73,7 @@
     margin-left: 24px;
     text-decoration: none;
     font-weight: bolder;
-    cursor: pointer;
+    transition: background-color .1s ease 0s;
 }
 
 .upload-button:hover {
@@ -103,6 +104,7 @@
 
 .auth-login {
     font-size:16px;
+    transition: color 0.1s ease 0s;
 }
 
 .auth-login:hover {
@@ -119,6 +121,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: color 0.3s;
 }
 
 .auth-signup:hover {

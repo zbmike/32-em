@@ -3,13 +3,11 @@ import { merge } from 'lodash';
 
 export default (oldState = {}, action) => {
     Object.freeze(oldState);
-    let newState = merge({}, oldState);
     switch (action.type) {
         case RECEIVE_PHOTOS:
-            return action.photos;
+            return merge({}, action.photos);
         case RECEIVE_PHOTO:
-            newState[action.photo.id] = action.photo;
-            return newState;
+            return merge({}, action.data.photos);
         default:
             return oldState;
     }

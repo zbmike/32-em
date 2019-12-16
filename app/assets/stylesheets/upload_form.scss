@@ -128,8 +128,7 @@
     border-radius: 3px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
+    justify-content: center;transition: color 0.1s ease 0s;
 }
 
 .photo-upload-button:hover {
