@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_PHOTO } from '../actions/photo_actions';
+import { RECEIVE_PHOTO, RECEIVE_PHOTOS } from '../actions/photo_actions';
 import { FOLLOW, UNFOLLOW } from '../actions/follow_actions';
 import { merge } from 'lodash';
 
@@ -18,6 +18,8 @@ export default (oldState = {}, action) => {
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;
       return newState;
+    case RECEIVE_PHOTOS:
+      return merge({}, action.data.users, newState);
     case RECEIVE_PHOTO:
       return merge({}, action.data.users, newState);
     default:

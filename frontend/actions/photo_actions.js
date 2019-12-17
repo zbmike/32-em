@@ -3,9 +3,9 @@ import * as PhotoAPI from '../util/photos_api_util';
 export const RECEIVE_PHOTOS = "RECEIVE_PHOTOS";
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 
-export const receivePhotos = photos => ({
+export const receivePhotos = data => ({
     type: RECEIVE_PHOTOS,
-    photos
+    data
 });
 
 export const receivePhoto = data => ({

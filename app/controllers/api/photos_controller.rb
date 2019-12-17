@@ -1,7 +1,8 @@
 class Api::PhotosController < ApplicationController
     def index
-        @photos = logged_in ? 
-            current_user.includes(:following => [:photos]) : []
+        @users = logged_in? ? 
+            current_user.following.includes(:photos, :followeds) : []
+        @photos = @users.map {|user| user.photos}.flatten
         render :index
     end
 

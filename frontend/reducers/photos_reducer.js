@@ -5,7 +5,7 @@ export default (oldState = {}, action) => {
     Object.freeze(oldState);
     switch (action.type) {
         case RECEIVE_PHOTOS:
-            return merge({}, action.photos);
+            return merge({}, action.data.photos);
         case RECEIVE_PHOTO:
             return merge({}, action.data.photos);
         default:
