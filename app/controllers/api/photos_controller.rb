@@ -1,6 +1,7 @@
 class Api::PhotosController < ApplicationController
     def index
-        @photos = Photo.all
+        @photos = logged_in ? 
+            current_user.includes(:following => [:photos]) : []
         render :index
     end
 

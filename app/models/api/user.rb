@@ -17,7 +17,7 @@ class Api::User < ApplicationRecord
         :class_name => "Follow"
 
     has_many :followed_by,
-        :through => "follows",
+        :through => "followeds",
         :source => "follower"
 
     has_many :follows,
@@ -25,7 +25,7 @@ class Api::User < ApplicationRecord
         :class_name => "Follow"
 
     has_many :following,
-        :through => "followeds",
+        :through => "follows",
         :source => "followee"
   
     def self.find_by_credentials(username, password)
