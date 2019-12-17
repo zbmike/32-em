@@ -77,17 +77,19 @@ class UploadForm extends React.Component {
         const {photoUrl} = this.state;
         const edit = (<div className="upload-edit">
             <div className="upload-edit-preview">
-                <img src={photoUrl} />
+                <div>
+                	<img src={photoUrl} />
+                </div>
             </div>
             <div className="upload-edit-form-container">
                 <form onSubmit={this.handleSubmit}>
                     <button onClick={this.handleSubmit}>Submit</button>
                     <div><label>Photo privacy</label>
                     <select value={this.state.privacy}
-                    onChange={this.updateState("privacy")}>
-                    <option value="1">Public</option>
-                    <option value="2">Unlisted</option>
-                    <option value="3">Limited access</option>
+                        onChange={this.updateState("privacy")}>
+                        <option value="1">Public</option>
+                        <option value="2">Unlisted</option>
+                        <option value="3">Limited access</option>
                     </select></div>
                     
                     <div><label>Location</label>

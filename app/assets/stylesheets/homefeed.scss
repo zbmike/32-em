@@ -1,0 +1,112 @@
+.homefeed {
+    margin-top: 24px;
+    padding: 0 64px;
+}
+
+.homefeed-title {
+    margin-bottom: 16px;
+}
+
+.homefeed-title > h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+}
+
+.homefeed-items-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.homefeed-item {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 0px){
+.homefeed-item {
+    width: 100%;
+}}
+
+@media (min-width: 375px){
+.homefeed-item {
+    width: 100%;
+}}
+
+@media (min-width: 768px){
+.homefeed-item {
+    width: 50%;
+}}
+
+@media (min-width: 768px){
+.homefeed-item {
+    margin: 0px;
+    padding: 16px;
+}}
+
+@media (min-width: 1024px){
+.homefeed-item {
+    padding: 32px;
+}}
+
+@media (min-width: 1024px){
+.homefeed-item {
+    width: 50%;
+}}
+
+@media (min-width: 1440px){
+.homefeed-item {
+    width: 50%;
+}}
+
+@media (min-width: 1920px){
+.homefeed-item {
+    width: 33.3333%;
+}}
+
+.homefeed-item-image-container img {
+    max-width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.homefeed-item-thumbnail img {
+    height: 48px;
+    width: 48px;
+    border-radius: 24px;
+}
+
+.homefeed-item-details-container {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homefeed-item-title-username-time > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.homefeed-item-title-username-time > h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.homefeed-item-title-username-time > div > p,
+.homefeed-item-title-username-time > div > a {
+    color: rgb(34, 34, 34);
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.homefeed-item-title-username-time > div > a:hover {
+    color:rgb(41, 134, 247);
+}

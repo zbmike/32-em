@@ -13,12 +13,22 @@ export const receivePhoto = data => ({
     data
 });
 
+// export const createPhoto = photoFormData => dispatch => (
+//     PhotoAPI.createPhoto(photoFormData).then(
+//         photo => dispatch(receivePhoto(photo)))
+// );
+
 export const createPhoto = photoFormData => dispatch => (
-    PhotoAPI.createPhoto(photoFormData).then(
-        photo => dispatch(receivePhoto(photo)))
+    PhotoAPI.createPhoto(photoFormData)
 );
 
 export const fetchPhoto = photoId => dispatch => (
     PhotoAPI.fetchPhoto(photoId).then(
         data => dispatch(receivePhoto(data)))
+);
+
+export const fetchPhotos = () => dispatch => (
+    PhotoAPI.fetchPhotos().then(
+        data => dispatch(receivePhotos(data))
+    )
 );

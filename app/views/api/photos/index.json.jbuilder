@@ -10,12 +10,10 @@ json.users do
     @users.each do |user|
         current_id = current_user.id
         follow = user.followeds.find_by_user_id(current_id)
-        json.users do
-            json.set! user.id do
-                json.partial! 'api/users/user', user: user
-                json.following true
-                json.followId follow.id
-            end
+        json.set! user.id do
+            json.partial! 'api/users/user', user: user
+            json.following true
+            json.followId follow.id
         end
     end
 end

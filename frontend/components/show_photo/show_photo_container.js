@@ -16,7 +16,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
     fetchPhoto: photoId => dispatch(fetchPhoto(photoId)),
     follow: ids => dispatch(follow(ids)),
-    unfollow: follow => dispatch(unfollow(follow))
+    unfollow: followId => dispatch(unfollow(followId))
 });
 
 export default connect(msp, mdp)(ShowPhoto);
