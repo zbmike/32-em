@@ -16,13 +16,11 @@ export default (oldState = {}, action) => {
       }
       return newState;
     case UNFOLLOW:
-      debugger
       const { followee_id:fol_id, user_id: u_id } = action.follow;
       const idx = newState[fol_id].followedBy.indexOf(u_id);
       if (idx > -1) {
         newState[fol_id].followedBy.splice(idx, 1);
       }
-      debugger
       return newState;
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;
