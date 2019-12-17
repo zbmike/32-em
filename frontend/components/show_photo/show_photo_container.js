@@ -10,7 +10,6 @@ const msp = (state, ownProps) => {
     return {
     author: state.entities.users[photo.authorId],
     photo,
-    follows: state.entities.follows,
     currentUserId: state.session.id
 }};
 

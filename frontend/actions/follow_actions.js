@@ -19,8 +19,8 @@ export const follow = ids => dispatch => (
     )
 );
 
-export const unfollow = follow => dispatch => (
-    FollowAPI.unfollow(follow.id).then(
-        () => dispatch(deleteFollow(follow))
+export const unfollow = followId => dispatch => (
+    FollowAPI.unfollow(followId).then(
+        follow => dispatch(deleteFollow(follow))
     )
 )

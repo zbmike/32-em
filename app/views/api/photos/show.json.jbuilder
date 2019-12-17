@@ -1,4 +1,5 @@
 author = @photo.author
+follow = nil
 if logged_in? 
     follow = author.followeds.find_by_user_id(current_user.id)
 end
@@ -9,24 +10,18 @@ json.photos do
     end
 end
 
-followed_by = []
+follow_id = nil
+following = false
 if follow
-    followed_by.push(follow.user_id)
+    follow_id = follow.id
+    following = true
 end
 
 json.users do
     json.set! author.id do
         json.partial! 'api/users/user', user: author
-        json.followedBy followed_by   
+        json.following following
+        json.followId follow_id
     end
 end
 
-if follow 
-    json.follows do
-        json.set! follow.id do
-            json.partial! 'api/follows/follow', follow: follow
-        end
-    end
-else
-    json.follows ({})
-end

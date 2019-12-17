@@ -10,8 +10,8 @@ class Api::FollowsController < ApplicationController
     end
 
     def destroy
-        Follow.destroy(params[:id])
-        render json: {}
+        @follow = Follow.destroy(params[:id])
+        render :show
     end
 
     private

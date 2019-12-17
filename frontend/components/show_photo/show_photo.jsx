@@ -44,27 +44,17 @@ class ShowPhoto extends React.Component {
             "Wedding"
         ]
         const { photoFileUrl, title, timeAgo, description, category, location } = this.props.photo;
-        const { username, id: photoAuthorId, followedBy } = this.props.author;
-        const { currentUserId, follow, unfollow, follows } = this.props;
+        const { username, id: photoAuthorId, following, followId } = this.props.author;
+        const { currentUserId, follow, unfollow } = this.props;
 
         let followButton
-        if (currentUserId === photoAuthorId) {
+        if (currentUserId === photoAuthorId || !currentUserId) {
             followButton = null;
-        } else if (followedBy.includes(currentUserId)) {
+        } else if (following) {
             followButton = (
                 <>
                     <p>&nbsp;•&nbsp;</p>
-                    <a onClick={() => {
-                const followsArray = Object.values(follows);
-                let fol;
-                for (let i = 0; i < followsArray.length; i++) {
-                    if (followsArray[i].followee_id === photoAuthorId && followsArray[i].user_id === currentUserId) {
-                        fol = followsArray[i];
-                        break;
-                    }
-                }
-                unfollow(fol)}}>
-                Unfollow</a>
+                    <a onClick={() => unfollow(followId)}>Unfollow</a>
                 </> )
         } else {
             followButton = ( 

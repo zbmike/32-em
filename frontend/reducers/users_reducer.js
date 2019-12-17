@@ -8,19 +8,12 @@ export default (oldState = {}, action) => {
   let newState = merge({}, oldState);
   switch (action.type) {
     case FOLLOW:
-      const {followee_id, user_id} = action.follow;
-      if (!newState[followee_id].followedBy) {
-        newState[followee_id].followedBy = [user_id];
-      } else {
-        newState[followee_id].followedBy.push(user_id);
-      }
+      newState[action.follow.followee_id].following = true;
+      newState[action.follow.followee_id].followId = action.follow.id;
       return newState;
     case UNFOLLOW:
-      const { followee_id:fol_id, user_id: u_id } = action.follow;
-      const idx = newState[fol_id].followedBy.indexOf(u_id);
-      if (idx > -1) {
-        newState[fol_id].followedBy.splice(idx, 1);
-      }
+      newState[action.follow.followee_id].following = false;
+      newState[action.follow.followee_id].followId = null;
       return newState;
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;
