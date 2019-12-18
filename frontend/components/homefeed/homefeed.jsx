@@ -8,7 +8,7 @@ class Homefeed extends React.Component {
 
     render() {
         const { users, photos, currentUserId } = this.props;
-        const items = Object.values(photos).map( photo => {
+        const items = Object.values(photos).reverse().map( photo => {
             return (<HomefeedItem user={users[photo.authorId]}
                 photo={photo} currentUserId={currentUserId}
                 key={`hi-${photo.id}`}/>)
