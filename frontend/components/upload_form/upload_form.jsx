@@ -26,6 +26,8 @@ class UploadForm extends React.Component {
         formData.append('photo[location]', this.state.location);
         formData.append('photo[category]', this.state.category);
         formData.append('photo[author_id]', this.state.authorId);
+        formData.append('photo[width]', this.state.width);
+        formData.append('photo[height]', this.state.height);
         this.props.createPhoto(formData).then(()=> {
             this.setState({
                 photoFile: null,
@@ -63,9 +65,16 @@ class UploadForm extends React.Component {
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            this.setState({photoFile: file, 
-                photoUrl: fileReader.result,
-                authorId: this.props.currentUserId});
+            const img = new Image();
+            img.src = fileReader.result;
+            img.onload = () => {
+                this.setState({photoFile: file, 
+                    photoUrl: fileReader.result,
+                    authorId: this.props.currentUserId,
+                    width: img.width,
+                    height: img.height
+                });
+            }
         }
         if (file){
             fileReader.readAsDataURL(file);
