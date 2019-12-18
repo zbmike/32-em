@@ -13,11 +13,6 @@ export const receivePhoto = data => ({
     data
 });
 
-// export const createPhoto = photoFormData => dispatch => (
-//     PhotoAPI.createPhoto(photoFormData).then(
-//         photo => dispatch(receivePhoto(photo)))
-// );
-
 export const createPhoto = photoFormData => dispatch => (
     PhotoAPI.createPhoto(photoFormData)
 );
