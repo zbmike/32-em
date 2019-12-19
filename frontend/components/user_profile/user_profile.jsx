@@ -76,15 +76,22 @@ export default class UserProfile extends React.Component {
 
     render() {
         const { photos, user, follow, unfollow, currentUserId } = this.props;
-        if (Object.keys(photos).length === 0) return null;
+        if (!user) return null;
         const grid = this.alignPhotos(photos);
 
         const divStyle = {
             width: `${this.state.width}px`,
             height: `${this.height}px`
         }
-        const coverStyle = {
-            backgroundImage: `url(${window.location.origin}${Object.values(photos)[0].photoFileUrl})`
+        let coverStyle = {
+            height: '300px'
+        };
+        let emptyClass = "empty";
+        if (Object.keys(photos).length !== 0 ){
+            coverStyle = {
+                backgroundImage: `url(${window.location.origin}${Object.values(photos)[0].photoFileUrl})`
+            }
+            emptyClass = "";
         }
         let followButton;
         if (currentUserId === user.id || !currentUserId) {
@@ -105,7 +112,7 @@ export default class UserProfile extends React.Component {
         return (
             <div className="user-profile">
                 <div className="user-profile-header">
-                    <div className="user-profile-cover-photo">
+                    <div className={`user-profile-cover-photo ${emptyClass}`}>
                         <div style={coverStyle} className="cover-image"></div>
                     </div>
                     <div className="user-profile-thumbnail-wrapper">

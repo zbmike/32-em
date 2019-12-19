@@ -21,7 +21,8 @@ export default props => {
                             <p> {photo.timeAgo} </p>
                         </div>
                     </div>
-                    <Link className="homefeed-item-thumbnail">
+                    <Link to={`/users/${user.id}`}
+                        className="homefeed-item-thumbnail">
                         <img src={window.userURL} alt={user.username} />
                     </Link>
                 </div>

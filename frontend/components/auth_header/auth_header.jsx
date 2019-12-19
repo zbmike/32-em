@@ -32,18 +32,19 @@ class AuthHeader extends React.Component {
         const { currentUser, logout, openModal } = this.props;
         if (!currentUser) this.state.dropdown_open = false;
         const { dropdown_open } = this.state;
-        const dropdown = (
+        const dropdown = currentUser ? (
             <div className="user-dropdown"
             ref={this.dropdownRef} >
                 <ul className={dropdown_open ? "user-dropdown-ul show" :"user-dropdown-ul"}>
-                    <li><Link to="/">Profile</Link></li>
+                    <li><Link to={`/users/${currentUser.id}`}
+                        onClick={()=> this.closeDropdown()}>Profile</Link></li>
                     <li><Link to="/">Galleries</Link></li>
                     <li><Link to="/">Liked photos</Link></li>
                     <li><Link to="/">Manage Photos</Link></li>
                     <li><button onClick={logout}>Log out</button></li>
                 </ul>
             </div>
-        );
+        ) : null;
         const elements = currentUser ?
             (
                 <>
@@ -55,8 +56,8 @@ class AuthHeader extends React.Component {
                         <img src={window.userURL} alt={currentUser.username} />
                     </div>
                     {dropdown}
-                    <a className="messenger"/>
-                    <a className="notifications" />
+                    {/* <a className="messenger"/>
+                    <a className="notifications" /> */}
                     <a className="upload-button" onClick={openModal}>
                         <div className="upload-arrow"></div><span>Upload</span></a>
                 </>
