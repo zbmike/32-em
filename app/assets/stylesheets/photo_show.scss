@@ -111,3 +111,24 @@
     margin-right: 16px;
     padding-bottom: 32px;
 }
+
+.show-photo-status {
+    margin-bottom: 32px;
+    display: flex;
+}
+
+.show-photo-status div {
+    padding: 32px 32px 0 0;
+}
+.show-photo-status div h3 {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    margin-bottom: 8px;
+}
+.show-photo-status div p {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    font-weight: bold;
+}

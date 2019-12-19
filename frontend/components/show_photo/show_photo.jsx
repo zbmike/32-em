@@ -43,7 +43,7 @@ class ShowPhoto extends React.Component {
             "Urban Exploration",
             "Wedding"
         ]
-        const { photoFileUrl, title, timeAgo, description, category, location } = this.props.photo;
+        const { photoFileUrl, title, timeAgo, description, category, location, views } = this.props.photo;
         const { username, id: photoAuthorId, following, followId } = this.props.author;
         const { currentUserId, follow, unfollow } = this.props;
 
@@ -93,6 +93,12 @@ class ShowPhoto extends React.Component {
                         <div className="show-photo-time">
                             <div className="time-icon"></div>
                             <p>{timeAgo}</p>
+                        </div>
+                    </div>
+                    <div className="show-photo-status">
+                        <div>
+                            <h3>Views</h3>
+                            <p> {views} </p>
                         </div>
                     </div>
                     <div className="show-photo-description">

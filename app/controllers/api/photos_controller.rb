@@ -17,6 +17,8 @@ class Api::PhotosController < ApplicationController
     def show
         @photo = Photo.includes(:author).find_by_id(params[:id])
         if @photo
+            @photo.views += 1
+            @photo.save
             render :show
         else
             render json: ['Photo not found.'], status: 404
