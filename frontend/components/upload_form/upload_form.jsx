@@ -104,7 +104,6 @@ class UploadForm extends React.Component {
                     <div><label>Location</label>
                     <input type="text" value={this.state.location}
                     onChange={this.updateState("location")} /></div>
-                    <span className="error-message">{this.state.valid.username ? "" : "This field is required."}</span>
                     
                     <div><label>Category</label>
                     <select value={this.state.category} onChange={this.updateState("category")}>
