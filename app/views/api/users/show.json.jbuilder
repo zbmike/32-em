@@ -6,6 +6,9 @@ json.photos do
     end
 end
 
+follower_records = @user.followeds
+following_records = @user.follows
+
 json.users do
     current_id = current_user.id
     follow = @user.followeds.find_by_user_id(current_id)
@@ -13,11 +16,17 @@ json.users do
     follow_id = nil
     if follow
         following = true
-        followId = follow.id
+        follow_id = follow.id
     end
     json.set! @user.id do
         json.partial! 'api/users/user', user: @user
         json.following following
         json.followId follow_id
+        json.followerCount follower_records.length
+        json.followingCount following_records.length
+    end
+
+    @user.followed_by.each do
+
     end
 end

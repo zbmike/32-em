@@ -9,12 +9,16 @@ export default (oldState = {}, action) => {
   let newState = merge({}, oldState);
   switch (action.type) {
     case FOLLOW:
-      newState[action.follow.followee_id].following = true;
-      newState[action.follow.followee_id].followId = action.follow.id;
+      let followUser = newState[action.follow.followee_id];
+      followUser.following = true;
+      followUser.followId = action.follow.id;
+      followUser.followerCount = followUser.followerCount + 1;
       return newState;
     case UNFOLLOW:
-      newState[action.follow.followee_id].following = false;
-      newState[action.follow.followee_id].followId = null;
+      let unfollowUser = newState[action.follow.followee_id];
+      unfollowUser.following = false;
+      unfollowUser.followId = null;
+      unfollowUser.followerCount = unfollowUser.followerCount - 1;
       return newState;
     case RECEIVE_CURRENT_USER:
       newState[action.user.id] = action.user;

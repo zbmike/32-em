@@ -122,11 +122,11 @@ export default class UserProfile extends React.Component {
                         <h1> {user.username} </h1>
                         <ul className="details">
                             <li>
-                                <span>3</span>
+                                <span>{user.followerCount}</span>
                                 <p>&nbsp;Followers</p>
                             </li>
                             <li>
-                                <span>1</span>
+                                <span>{user.followingCount}</span>
                                 <p>&nbsp;Following</p>
                             </li>
                         </ul>

@@ -16,7 +16,7 @@ export default props => {
                         <h3>{photo.title}</h3>
                         <div>
                             <p>by</p>
-                            <Link> {user.username} </Link>
+                            <Link to={`/users/${user.id}`}> {user.username} </Link>
                             <p>•</p>
                             <p> {photo.timeAgo} </p>
                         </div>

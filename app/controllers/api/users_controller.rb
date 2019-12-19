@@ -10,7 +10,8 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-      @user = Api::User.includes(:followeds, :photos).find_by_id(params[:id])
+      @user = Api::User.includes(:followeds, :follows, :photos)
+          .find_by_id(params[:id])
       @photos = @user.photos
       render :show
     end
