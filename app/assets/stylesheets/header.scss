@@ -143,11 +143,21 @@
     border-radius: 8px;
     opacity: 0;
     transition: top 0.4s, opacity 0.4s;
+    // height: 0;
 }
 
 .user-dropdown-ul.show {
     top: 40px;
+    // height: auto;
     opacity: 1;
+}
+
+.user-dropdown-ul > li {
+    display: none;
+}
+
+.user-dropdown-ul.show > li {
+    display: block;
 }
 
 .user-dropdown-ul:after {

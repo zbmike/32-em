@@ -1,0 +1,210 @@
+.user-profile {
+    perspective: 1px;
+    height: 95vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.user-profile-image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.user-profile-header {
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom: 1px solid  rgb(185, 193, 199);
+}
+
+.user-profile-cover-photo {
+    position: relative;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.user-profile-cover-photo .cover-image {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transform: translateZ(-1px) scale(2);
+}
+
+.user-profile-thumbnail-wrapper {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.user-profile-thumbnail-wrapper > div {
+    position: relative;
+}
+
+
+.user-profile-thumbnail {
+    margin: 0 auto;
+    width: 104px;
+    height: 104px;
+    position: relative;
+    z-index: 100;
+    top: -52px;
+}
+
+.user-profile-thumbnail img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+.user-profile-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 50px 0 0;
+    margin-bottom: 50px;
+}
+
+.user-profile-buttons .follow-button {
+    min-width: 100px;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #0099e5;
+    border: 1px solid #0099e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-buttons .follow-button:hover {
+    background-color: #00aaff;
+}
+
+.user-profile-details {
+    text-align: center;
+}
+
+.user-profile-details > h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.user-profile-details {
+    text-align: center;
+}
+
+.user-profile-details .details {
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-details .details li {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+    color: rgb(185, 193, 199);
+}
+
+.user-profile-image-title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.user-profile-image-title h2 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-profile-image-title span {
+    font-size: 14px;
+    font-weight: 200;
+    margin-left: 5px;
+}
+
+.user-profile-details .details li > span{
+    font-weight: 700;
+}
+
+.user-profile-image-unit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-image-container {
+    position:relative;
+    width: auto;
+    height: auto;
+}
+
+.user-profile-image-container > a {
+    z-index: 15;
+}
+
+.user-profile-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.user-profile-image-content {
+    opacity:0;
+    font-size: 16px;
+    position:absolute;
+    bottom:0;
+    right:0;
+    color:white;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    text-align:center;
+}
+
+.user-profile-image-container .user-profile-image-content:hover {
+    opacity:1;
+}  
+
+.user-profile-image-container .user-profile-image-content .text {
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    color: white;
+    opacity:0;
+    transition-duration: 0.2s;
+}
+
+.user-profile-image-container .user-profile-image-content:hover .text {
+    opacity:1;
+    bottom: 15px;
+}
+
+.user-profile-image-container .user-profile-image-content .grad {
+    position:absolute;
+    bottom:0;
+    background:linear-gradient(to bottom, transparent 0%, black 100%);
+    height:0;
+    width:100%;
+    opacity:0;
+    transition-duration: 0.2s;
+}
+
+.user-profile-image-container .user-profile-image-content:hover .grad {
+    opacity:1;
+    height:30%;
+}
