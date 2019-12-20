@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default props => {
     const { photo, wh } = props;
-    debugger
     return (
         <div className="photo-grid-image-unit">
             <div className="photo-grid-image-container">

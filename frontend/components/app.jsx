@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 import AuthHeader from "./auth_header/auth_header_container";
@@ -21,13 +21,14 @@ const App = () => (
           <AuthHeader />
         </header>
       <main>
-
-        <AuthRoute exact path="/" component={Splash} />
-        <ProtectedRoute exact path="/homefeed" component={Homefeed} />
-        <Route path="/photos/:photoId" component={ShowPhotoContainer} />
-        <Route path="/users/:userId" component={UserProfileContainer} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <Switch>
+          <AuthRoute exact path="/" component={Splash} />
+          <ProtectedRoute exact path="/homefeed" component={Homefeed} />
+          <Route path="/photos/:photoId" component={ShowPhotoContainer} />
+          <Route path="/users/:userId" component={UserProfileContainer} />
+          <AuthRoute exact path="/login" component={LoginFormContainer} />
+          <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        </Switch>
       </main>
     </>
   );
