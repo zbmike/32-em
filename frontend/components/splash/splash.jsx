@@ -51,8 +51,10 @@ export default class Splash extends Component {
                 </div>
                 <div className="splash-1-mask"></div>
             </div>
-            <div className="homefeed-title">
-                <h2>Check lastest photos from our photographers</h2>
+            <div className="splash-2">
+                <div className="homefeed-title">
+                    <h2>Checkout the lastest photos from our photographers</h2>
+                </div>
             </div>
             <PhotoGrid photos={this.props.photos}/>
             <footer className="footer">

@@ -65,7 +65,9 @@ export default class PhotoGrid extends React.Component {
                 }
                 imgArray.push(
                     <div style={inlineStyle} key={`up-${row[i].id}`}>
-                        <PhotoGridItem photo={row[i]} />
+                        <PhotoGridItem photo={row[i]} wh={{
+                            width: `${styleWidth-20}px`,
+                            height: `${rowHeight-20}px`,}}/>
                     </div>)
             }
         }

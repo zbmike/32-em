@@ -68,7 +68,10 @@ export default class UserProfile extends React.Component {
                 }
                 imgArray.push(
                 <div style={inlineStyle} key={`up-${row[i].id}`}>
-                    <UserProfileImageItem photo={row[i]} />
+                        <UserProfileImageItem photo={row[i]} wh={{
+                            width: `${styleWidth - 20}px`,
+                            height: `${rowHeight - 20}px`,
+                        }} />
                 </div>)
             }
         }
