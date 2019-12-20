@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchUser } from '../../actions/user_actions';
 import { follow, unfollow } from '../../actions/follow_actions';
+import { setLoading, setFinished } from '../../actions/loading_actions';
 import UserProfile from './user_profile';
 
 const msp = (state, ownProps) => {
@@ -15,7 +16,9 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
     fetchUser: userId => dispatch(fetchUser(userId)),
     follow: ids => dispatch(follow(ids)),
-    unfollow: followId => dispatch(unfollow(followId))
+    unfollow: followId => dispatch(unfollow(followId)),
+    setLoading: () => dispatch(setLoading()),
+    setFinished: () => dispatch(setFinished()),
 });
 
 export default connect(msp, mdp)(UserProfile);

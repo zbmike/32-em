@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchMorePhotos } from '../../actions/photo_actions';
-import { setLoading, setFinished } from '../../actions/loading_actions'
+import { setLoading, setFinished } from '../../actions/loading_actions';
 import Splash from './splash';
 
 const msp = state => ({
@@ -14,7 +14,7 @@ const msp = state => ({
 const mdp = dispatch => ({
     fetchPhotos: filter => dispatch(fetchMorePhotos(filter)),
     setLoading: () => dispatch(setLoading()),
-    setFinished: () => dispatch(setFinished())
+    setFinished: () => dispatch(setFinished()),
 });
 
 export default connect(msp, mdp)(Splash);

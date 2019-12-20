@@ -7,7 +7,6 @@ export default (oldState = [], action) => {
         case RECEIVE_MORE_PHOTOS:
             const photos = merge({}, action.data.photos);
             const newPhotos = Object.values(photos);
-            newPhotos.pop();
             const newState = oldState.concat(newPhotos);
             return newState;
         default:

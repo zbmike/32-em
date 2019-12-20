@@ -1,4 +1,4 @@
-import { RECEIVE_PHOTO, RECEIVE_PHOTOS, RECEIVE_MORE_PHOTOS } from '../actions/photo_actions';
+import { RECEIVE_PHOTO, RECEIVE_PHOTOS } from '../actions/photo_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { merge } from 'lodash';
@@ -10,8 +10,6 @@ export default (oldState = {}, action) => {
             return merge({}, action.data.photos);
         case RECEIVE_PHOTO:
             return merge({}, action.data.photos);
-        case RECEIVE_MORE_PHOTOS:
-            return merge({}, oldState, action.data.photos);
         case RECEIVE_USER:
             return merge({}, action.data.photos);
         case RECEIVE_CURRENT_USER:

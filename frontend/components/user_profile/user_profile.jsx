@@ -24,9 +24,11 @@ export default class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userId);
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions.bind(this));
+        this.props.setLoading();
+        this.props.fetchUser(this.props.match.params.userId)
+            .then(() => this.props.setFinished());
     }
 
     componentWillUnmount() {

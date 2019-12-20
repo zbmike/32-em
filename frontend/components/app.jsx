@@ -10,9 +10,11 @@ import ShowPhotoContainer from './show_photo/show_photo_container';
 import UserProfileContainer from './user_profile/user_profile_container';
 import Splash from './splash/splash_container';
 import Homefeed from './homefeed/homefeed_container';
+import LoadingAnimation from './loading';
 
 const App = () => (
     <>
+        <LoadingAnimation />
         <UploadFormContainer />
         <header className="header">
           <Link to="/"><h1>32em</h1></Link>

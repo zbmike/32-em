@@ -40,7 +40,6 @@ class AuthHeader extends React.Component {
                         onClick={()=> this.closeDropdown()}>Profile</Link></li>
                     <li><Link to="/">Galleries</Link></li>
                     <li><Link to="/">Liked photos</Link></li>
-                    <li><Link to="/">Manage Photos</Link></li>
                     <li><button onClick={logout}>Log out</button></li>
                 </ul>
             </div>

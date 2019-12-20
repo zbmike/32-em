@@ -8,7 +8,8 @@ export default class Splash extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            offset: 0
+            offset: 0,
+            limit: 15
         }
         window.onscroll = debounce(() => {
             const {loading, hasMore} = this.props;
@@ -23,9 +24,10 @@ export default class Splash extends Component {
     }
 
     loadPhotos() {
-        this.props.setLoading()
-        this.props.fetchPhotos({offset: this.state.offset, limit: 15}).then(() =>{
-            this.setState({offset: this.state.offset + 15
+        const {offset, limit} = this.state;
+        this.props.setLoading();
+        this.props.fetchPhotos({offset, limit}).then(() =>{
+            this.setState({offset: offset + 15
             });
             this.props.setFinished();
         })

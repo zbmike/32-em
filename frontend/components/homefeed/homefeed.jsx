@@ -3,7 +3,9 @@ import HomefeedItem from './homefeed_item';
 
 class Homefeed extends React.Component {
     componentDidMount() {
-        this.props.fetchPhotos();
+        this.props.setLoading();
+        this.props.fetchPhotos()
+            .then(() => this.props.setFinished());
     }
 
     render() {

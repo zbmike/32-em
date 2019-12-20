@@ -4,7 +4,9 @@ import { follow } from '../../util/follows_api_util';
 class ShowPhoto extends React.Component {
 
     componentDidMount() {
-        this.props.fetchPhoto(this.props.match.params.photoId);
+        this.props.setLoading();
+        this.props.fetchPhoto(this.props.match.params.photoId)
+            .then(() => this.props.setFinished());
     }
 
     render() {
@@ -87,10 +89,10 @@ class ShowPhoto extends React.Component {
                         </div>
                     </div>
                     <div className="show-photo-loc-time">
-                        <div className="show-photo-location">
+                        {location? (<div className="show-photo-location">
                             <div className="location-icon"></div>
                             <p>{location}</p>
-                        </div>
+                        </div>) : null}
                         <div className="show-photo-time">
                             <div className="time-icon"></div>
                             <p>{timeAgo}</p>
