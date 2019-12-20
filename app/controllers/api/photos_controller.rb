@@ -3,7 +3,15 @@ class Api::PhotosController < ApplicationController
         if params[:filters]
             limit = params[:filters][:limit]
             offset = params[:filters][:offset]
-            @photos = Photo.all.limit(limit).offset(offset)
+            @photos = []
+            if logged_in?
+                following_ids = current_user.following.pluck(:id)
+                following_ids.push(current_user.id)
+                @photos = Photo.all.limit(limit).offset(offset)
+                    .where.not(author_id: following_ids)
+            else
+                @photos = Photo.all.limit(limit).offset(offset)
+            end
             @has_more = @photos.length == limit.to_i
             render :filtered_photos
         else

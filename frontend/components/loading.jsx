@@ -8,7 +8,7 @@ const msp = state => ({
 const LoadingAnimation = ({ loading }) => {
     return loading ? (
         <div className="fullscreen-animation">
-            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </div>
     ) : null;
 }

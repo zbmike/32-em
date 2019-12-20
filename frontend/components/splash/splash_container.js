@@ -8,7 +8,7 @@ const msp = state => ({
     users: state.entities.users,
     photos: state.entities.infPhotos,
     loading: state.ui.loading,
-    hasMore: state.ui.hasMore
+    hasMore: state.ui.hasMore,
 });
 
 const mdp = dispatch => ({
