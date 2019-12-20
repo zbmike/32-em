@@ -35,7 +35,7 @@ class Api::PhotosController < ApplicationController
     def show
         @photo = Photo.includes(:author).find_by_id(params[:id])
         if @photo
-            if logged_in? && current_user.id != @photo.author_id
+            if (logged_in? && current_user.id != @photo.author_id) || !logged_in?
                 @photo.views += 1
                 @photo.save
             end
