@@ -3,6 +3,7 @@ import * as PhotoAPI from '../util/photos_api_util';
 export const RECEIVE_PHOTOS = "RECEIVE_PHOTOS";
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const RECEIVE_MORE_PHOTOS = "RECEIVE_MORE_PHOTOS";
+export const CLEAR_INF_PHOTOS = "CLEAR_INF_PHOTOS";
 
 export const receivePhotos = data => ({
     type: RECEIVE_PHOTOS,
@@ -18,6 +19,10 @@ export const receiveMorePhotos = data => ({
     type: RECEIVE_MORE_PHOTOS,
     data
 });
+
+export const clearInfPhotos = () => ({
+    type: CLEAR_INF_PHOTOS,
+})
 
 export const createPhoto = photoFormData => dispatch => (
     PhotoAPI.createPhoto(photoFormData)

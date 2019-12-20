@@ -10,7 +10,7 @@ class UploadForm extends React.Component {
             description: '',
             privacy: '1',
             location: '',
-            category: '2',
+            category: '1',
             authorId: this.props.currentUserId
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +36,7 @@ class UploadForm extends React.Component {
                 description: '',
                 privacy: '1',
                 location: '',
-                category: '2',
+                category: '1',
                 authorId: this.props.currentUserId
             })
             this.props.closeModal()}, err=> alert(err.responseJSON));
@@ -53,7 +53,16 @@ class UploadForm extends React.Component {
     clearModal(e) {
         if (this.state.photoUrl) {
             if (confirm('This photo will not be loaded. Are you Sure you want to continue?')) {
-                this.setState({photoFile:null, photoUrl: null})
+                this.setState({
+                    photoFile: null,
+                    photoUrl: null,
+                    title: '',
+                    description: '',
+                    privacy: '1',
+                    location: '',
+                    category: '1',
+                    authorId: this.props.currentUserId
+                });
                 this.props.closeModal();
             }
         } else {

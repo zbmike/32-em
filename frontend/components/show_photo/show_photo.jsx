@@ -1,5 +1,5 @@
 import React from 'react';
-import { follow } from '../../util/follows_api_util';
+import { Link } from 'react-router-dom';
 
 class ShowPhoto extends React.Component {
 
@@ -83,10 +83,10 @@ class ShowPhoto extends React.Component {
                                 {followButton}
                             </div>
                         </div>
-                        <div className="show-photo-author-thumbnail">
+                        <Link to={`/users/${photoAuthorId}`} className="show-photo-author-thumbnail">
                             <img src={window.userURL} alt="user"
                                 />
-                        </div>
+                        </Link>
                     </div>
                     <div className="show-photo-loc-time">
                         {location? (<div className="show-photo-location">

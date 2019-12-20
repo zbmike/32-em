@@ -34,6 +34,7 @@ export default class Splash extends Component {
     }
 
     componentDidMount() {
+        this.props.clearInfPhotos();
         this.loadPhotos();
     }
     
@@ -49,6 +50,9 @@ export default class Splash extends Component {
                     <Link to="/signup">Sign up</Link>
                 </div>
                 <div className="splash-1-mask"></div>
+            </div>
+            <div className="homefeed-title">
+                <h2>Check lastest photos from our photographers</h2>
             </div>
             <PhotoGrid photos={this.props.photos}/>
             <footer className="footer">

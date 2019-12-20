@@ -38,7 +38,7 @@ export default class PhotoGrid extends React.Component {
         let totalHeight = 0;
         while (newPhotos.length > 0) {
             let row = [];
-            let nextPhoto = newPhotos.shift();
+            let nextPhoto = newPhotos.pop();
             let rowHeight = ((this.state.width - 20) * nextPhoto.height / nextPhoto.width) + 20;
             let totalWidth = nextPhoto.width;
             const refHeight = nextPhoto.height;
@@ -48,7 +48,7 @@ export default class PhotoGrid extends React.Component {
                     rowHeight = 400;
                     break;
                 }
-                nextPhoto = newPhotos.shift();
+                nextPhoto = newPhotos.pop();
                 row.push(nextPhoto);
                 let relativeWidth = refHeight / nextPhoto.height * nextPhoto.width;
                 totalWidth = totalWidth + relativeWidth;

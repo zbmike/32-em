@@ -38,6 +38,7 @@ class Homefeed extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearInfPhotos();
         this.loadPhotos();
     }
 

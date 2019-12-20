@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchPhotos, fetchMorePhotos } from '../../actions/photo_actions';
+import { fetchPhotos, fetchMorePhotos, clearInfPhotos } from '../../actions/photo_actions';
 import { follow, unfollow } from '../../actions/follow_actions';
 import { setLoading, setFinished } from '../../actions/loading_actions'
 import Homefeed from './homefeed';
@@ -21,6 +21,7 @@ const mdp = dispatch => ({
     setLoading: () => dispatch(setLoading()),
     setFinished: () => dispatch(setFinished()),
     fetchMorePhotos: filters => dispatch(fetchMorePhotos(filters)),
+    clearInfPhotos: () => dispatch(clearInfPhotos()),
 });
 
 export default connect(msp, mdp)(Homefeed);

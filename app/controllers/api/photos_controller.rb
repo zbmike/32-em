@@ -9,8 +9,10 @@ class Api::PhotosController < ApplicationController
                 following_ids.push(current_user.id)
                 @photos = Photo.all.limit(limit).offset(offset)
                     .where.not(author_id: following_ids)
+                    .order(updated_at: :desc)
             else
                 @photos = Photo.all.limit(limit).offset(offset)
+                    .order(updated_at: :desc)
             end
             @has_more = @photos.length == limit.to_i
             render :filtered_photos
@@ -33,8 +35,10 @@ class Api::PhotosController < ApplicationController
     def show
         @photo = Photo.includes(:author).find_by_id(params[:id])
         if @photo
-            @photo.views += 1
-            @photo.save
+            if current_user.id != @photo.author_id
+                @photo.views += 1
+                @photo.save
+            end
             render :show
         else
             render json: ['Photo not found.'], status: 404
