@@ -8,7 +8,8 @@ class ShowPhoto extends React.Component {
     }
 
     render() {
-        if (!this.props.photo) return null;
+        if (!this.props.photo || !this.props.author) return null;
+
         const categories = [
             "Uncategorized",
             "Abstract",

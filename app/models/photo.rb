@@ -1,6 +1,5 @@
 class Photo < ApplicationRecord
     validates :title, presence: true
-    validates :location, presence: true
     validates :category, presence: true
     validates :author_id, presence: true
 

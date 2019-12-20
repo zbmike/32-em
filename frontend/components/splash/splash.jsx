@@ -1,30 +1,41 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { debounce } from 'lodash';
 
+import PhotoGrid from './photo_grid';
+ 
 export default class Splash extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            offset: 0
+        }
+        window.onscroll = debounce(() => {
+            const {loading, hasMore} = this.props;
+            if (loading || !hasMore) return;
+            if (
+                window.innerHeight + document.documentElement.scrollTop
+                === document.documentElement.offsetHeight
+            ) {
+                this.loadPhotos();
+            }
+        }, 100)
+    }
+
+    loadPhotos() {
+        this.props.setLoading()
+        this.props.fetchPhotos({offset: this.state.offset, limit: 15}).then(() =>{
+            this.setState({offset: this.state.offset + 15
+            });
+            this.props.setFinished();
+        })
+    }
+
+    componentDidMount() {
+        this.loadPhotos();
+    }
     
     render() {
-    const hardcode = (
-        <><div className="splash-image-unit">
-            <div className="splash-image-container">
-                <img src={window.churchURL} alt="church"
-                    className="splash-image" width="300" height="300" />
-                <Link to="/photos/4" className="splash-image-content">
-                    <div className="grad" />
-                    <div className="text">Photo by zbmike</div>
-                </Link>
-                </div>
-            </div>
-            <div className="splash-image-unit">
-                <div className="splash-image-container">
-                <img src={window.pinkwallURL} alt="pinkwall"
-                    className="splash-image" width="300" height="300" />
-                <div className="splash-image-content">
-                    <div className="grad" />
-                    <div className="text">Photo by zbmike</div>
-                </div>
-            </div>
-        </div></>)
     return (
         <div>
             <div className="splash-1">
@@ -37,9 +48,7 @@ export default class Splash extends Component {
                 </div>
                 <div className="splash-1-mask"></div>
             </div>
-            <div className="splash-2">
-                {hardcode}
-            </div>
+            <PhotoGrid photos={this.props.photos}/>
             <footer className="footer">
                 <div className="cr-logo">&copy; 32em</div>
                 <div className="footer-links">

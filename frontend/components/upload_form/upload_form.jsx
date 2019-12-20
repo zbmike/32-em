@@ -8,9 +8,9 @@ class UploadForm extends React.Component {
             photoUrl: null,
             title: '',
             description: '',
-            privacy: '',
+            privacy: '1',
             location: '',
-            category: '',
+            category: '2',
             authorId: this.props.currentUserId
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,12 +34,12 @@ class UploadForm extends React.Component {
                 photoUrl: null,
                 title: '',
                 description: '',
-                privacy: '',
+                privacy: '1',
                 location: '',
-                category: '',
+                category: '2',
                 authorId: this.props.currentUserId
             })
-            this.props.closeModal()});
+            this.props.closeModal()}, err=> alert(err.responseJSON));
     }
 
     updateState(type) {
@@ -71,6 +71,7 @@ class UploadForm extends React.Component {
                 this.setState({photoFile: file, 
                     photoUrl: fileReader.result,
                     authorId: this.props.currentUserId,
+                    title: file.name,
                     width: img.width,
                     height: img.height
                 });

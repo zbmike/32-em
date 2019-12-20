@@ -8,7 +8,7 @@ import SignupFormContainer from './session_forms/signup_form_container';
 import UploadFormContainer from './upload_form/upload_form_container';
 import ShowPhotoContainer from './show_photo/show_photo_container';
 import UserProfileContainer from './user_profile/user_profile_container';
-import Splash from './splash/splash';
+import Splash from './splash/splash_container';
 import Homefeed from './homefeed/homefeed_container';
 
 const App = () => (

@@ -1,8 +1,16 @@
 class Api::PhotosController < ApplicationController
     def index
-        @users = logged_in? ? 
-            current_user.following.includes(:photos, :followeds) : []
-        render :index
+        if params[:filters]
+            limit = params[:filters][:limit]
+            offset = params[:filters][:offset]
+            @photos = Photo.all.limit(limit).offset(offset)
+            @has_more = @photos.length == limit.to_i
+            render :filtered_photos
+        else
+            @users = logged_in? ? 
+                current_user.following.includes(:photos, :followeds) : []
+            render :index
+        end
     end
 
     def create

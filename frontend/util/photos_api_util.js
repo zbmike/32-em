@@ -1,8 +1,9 @@
-export const fetchPhotos = () => (
+export const fetchPhotos = filters => (
   $.ajax({
     beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
     url: '/api/photos',
-    method: 'GET'
+    method: 'GET',
+    data: { filters }
   })
 );
 
