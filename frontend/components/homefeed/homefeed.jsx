@@ -37,6 +37,10 @@ class Homefeed extends React.Component {
         })
     }
 
+    componentWillUnmount() {
+        window.onscroll = null;
+    }
+
     componentDidMount() {
         this.props.clearInfPhotos();
         this.loadPhotos();

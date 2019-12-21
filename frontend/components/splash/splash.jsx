@@ -24,6 +24,7 @@ export default class Splash extends Component {
     }
 
     loadPhotos() {
+        debugger
         const {offset, limit} = this.state;
         this.props.setLoading();
         this.props.fetchPhotos({offset, limit}).then(() =>{
@@ -36,6 +37,10 @@ export default class Splash extends Component {
     componentDidMount() {
         this.props.clearInfPhotos();
         this.loadPhotos();
+    }
+
+    componentWillUnmount() {
+        window.onscroll = null;
     }
     
     render() {
