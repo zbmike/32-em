@@ -24,7 +24,6 @@ export default class Splash extends Component {
     }
 
     loadPhotos() {
-        debugger
         const {offset, limit} = this.state;
         this.props.setLoading();
         this.props.fetchPhotos({offset, limit}).then(() =>{
