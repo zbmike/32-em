@@ -70,7 +70,6 @@
 .upload-edit-form-container form {
     display: flex;
     flex-direction: column;
-    overflow: scroll ;
 }
 
 .upload-edit-form-container label {
@@ -145,4 +144,9 @@
 
 .photo-upload-button:hover {
     background-color: #00aaff;
+}
+
+.upload-edit-form-container > form > div > small {
+    color: red;
+    margin-top: 3px;
 }

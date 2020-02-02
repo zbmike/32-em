@@ -11,35 +11,46 @@ class UploadForm extends React.Component {
             privacy: '1',
             location: '',
             category: '1',
-            authorId: this.props.currentUserId
+            authorId: this.props.currentUserId,
+            titleValid: true,
+            locationValid: true
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('photo[title]', this.state.title);
-        formData.append('photo[photo_file]', this.state.photoFile);
-        formData.append('photo[description]', this.state.description);
-        formData.append('photo[privacy]', this.state.privacy);
-        formData.append('photo[location]', this.state.location);
-        formData.append('photo[category]', this.state.category);
-        formData.append('photo[author_id]', this.state.authorId);
-        formData.append('photo[width]', this.state.width);
-        formData.append('photo[height]', this.state.height);
-        this.props.createPhoto(formData).then(()=> {
+        const titleValid = Boolean(this.state.title);
+        const locationValid = Boolean(this.state.location);
+        const allValid = titleValid && locationValid;
+        if (allValid) {
+            const formData = new FormData();
+            formData.append('photo[title]', this.state.title);
+            formData.append('photo[photo_file]', this.state.photoFile);
+            formData.append('photo[description]', this.state.description);
+            formData.append('photo[privacy]', this.state.privacy);
+            formData.append('photo[location]', this.state.location);
+            formData.append('photo[category]', this.state.category);
+            formData.append('photo[author_id]', this.state.authorId);
+            formData.append('photo[width]', this.state.width);
+            formData.append('photo[height]', this.state.height);
+            this.props.createPhoto(formData).then(()=> {
+                this.setState({
+                    photoFile: null,
+                    photoUrl: null,
+                    title: '',
+                    description: '',
+                    privacy: '1',
+                    location: '',
+                    category: '1',
+                    authorId: this.props.currentUserId
+                })
+                this.props.closeModal()}, err=> alert(err.responseJSON));
+        } else {
             this.setState({
-                photoFile: null,
-                photoUrl: null,
-                title: '',
-                description: '',
-                privacy: '1',
-                location: '',
-                category: '1',
-                authorId: this.props.currentUserId
+                titleValid, locationValid
             })
-            this.props.closeModal()}, err=> alert(err.responseJSON));
+        }
     }
 
     updateState(type) {
@@ -111,48 +122,56 @@ class UploadForm extends React.Component {
                         <option value="3">Limited access</option>
                     </select></div>
                     
-                    <div><label>Location</label>
-                    <input type="text" value={this.state.location}
-                    onChange={this.updateState("location")} /></div>
+                    <div>
+                        <label for="location">Location</label>
+                        <input type="text" id="location" value={this.state.location}
+                            onChange={this.updateState("location")} />
+                        <small>{this.state.locationValid ? "" :"This field is required."}</small>
+                    </div>
                     
                     <div><label>Category</label>
                     <select value={this.state.category} onChange={this.updateState("category")}>
-                    <option value="1">Uncategorized</option>
-                    <option value="2">Abstract</option>
-                    <option value="3">Aerial</option>
-                    <option value="4">Animals</option>
-                    <option value="5">Black and White</option>
-                    <option value="6">Boudoir</option>
-                    <option value="7">Celebrities</option>
-                    <option value="8">City &amp; Architecture</option>
-                    <option value="9">Commercial</option>
-                    <option value="10">Concert</option>
-                    <option value="11">Concert</option>
-                    <option value="12">Family</option>
-                    <option value="13">Fashion</option>
-                    <option value="14">Film</option>
-                    <option value="15">Fine Art</option>
-                    <option value="16">Food</option>
-                    <option value="17">Journalism</option>
-                    <option value="18">Landscape</option>
-                    <option value="19">Macro</option>
-                    <option value="20">Nature</option>
-                    <option value="21">Night</option>
-                    <option value="22">Nude</option>
-                    <option value="23">People</option>
-                    <option value="24">Performing Arts</option>
-                    <option value="25">Sports</option>
-                    <option value="26">Still Life</option>
-                    <option value="27">Street</option>
-                    <option value="28">Transportation</option>
-                    <option value="29">Travel</option>
-                    <option value="30">Underwater</option>
-                    <option value="31">Urban Exploration</option>
-                    <option value="32">Wedding</option>
+                        <option value="1">Uncategorized</option>
+                        <option value="2">Abstract</option>
+                        <option value="3">Aerial</option>
+                        <option value="4">Animals</option>
+                        <option value="5">Black and White</option>
+                        <option value="6">Boudoir</option>
+                        <option value="7">Celebrities</option>
+                        <option value="8">City &amp; Architecture</option>
+                        <option value="9">Commercial</option>
+                        <option value="10">Concert</option>
+                        <option value="11">Concert</option>
+                        <option value="12">Family</option>
+                        <option value="13">Fashion</option>
+                        <option value="14">Film</option>
+                        <option value="15">Fine Art</option>
+                        <option value="16">Food</option>
+                        <option value="17">Journalism</option>
+                        <option value="18">Landscape</option>
+                        <option value="19">Macro</option>
+                        <option value="20">Nature</option>
+                        <option value="21">Night</option>
+                        <option value="22">Nude</option>
+                        <option value="23">People</option>
+                        <option value="24">Performing Arts</option>
+                        <option value="25">Sports</option>
+                        <option value="26">Still Life</option>
+                        <option value="27">Street</option>
+                        <option value="28">Transportation</option>
+                        <option value="29">Travel</option>
+                        <option value="30">Underwater</option>
+                        <option value="31">Urban Exploration</option>
+                        <option value="32">Wedding</option>
                     </select></div>
-                    <div><label>Title</label>
-                        <input type="text" value={this.state.title}
-                            onChange={this.updateState("title")} /></div>
+
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" value={this.state.title}
+                            onChange={this.updateState("title")} />
+                        <small>{this.state.titleValid ? "" :"This field is required."}</small>
+                    </div>
+
                     <div><label>Description</label>
                     <textarea value={this.state.description}
                         onChange={this.updateState("description")} 
@@ -162,6 +181,7 @@ class UploadForm extends React.Component {
         const upload = (<div>
                 <input type="file" name="photo-upload" id="photo-upload"
                     className="file-input"
+                    accept=".jpg, .jpeg, .png"
                     onChange={this.handleFile.bind(this)} />
                 <label htmlFor="photo-upload" className="photo-upload-button">
                     <span>Select a Photo</span>
