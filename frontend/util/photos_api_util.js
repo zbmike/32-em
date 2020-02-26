@@ -1,27 +1,51 @@
-export const fetchPhotos = filters => (
+export const fetchPhotos = filters =>
   $.ajax({
-    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-    url: '/api/photos',
-    method: 'GET',
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader(
+        "X-CSRF-Token",
+        $('meta[name="csrf-token"]').attr("content")
+      );
+    },
+    url: "/api/photos",
+    method: "GET",
     data: { filters }
-  })
-);
+  });
 
-export const createPhoto = formData => (
+export const createPhoto = formData =>
   $.ajax({
-    beforeSend: function (xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
-    url: '/api/photos',
-    method: 'POST',
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader(
+        "X-CSRF-Token",
+        $('meta[name="csrf-token"]').attr("content")
+      );
+    },
+    url: "/api/photos",
+    method: "POST",
     data: formData,
     contentType: false,
     processData: false
-  })
-);
+  });
 
-export const fetchPhoto = photoId => (
+export const fetchPhoto = photoId =>
   $.ajax({
-    beforeSend: function (xhr) { xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')) },
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader(
+        "X-CSRF-Token",
+        $('meta[name="csrf-token"]').attr("content")
+      );
+    },
     url: `/api/photos/${photoId}`,
-    method: 'GET'
-  })
-);
+    method: "GET"
+  });
+
+export const fetchLikedPhotos = () =>
+  $.ajax({
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader(
+        "X-CSRF-Token",
+        $('meta[name="csrf-token"]').attr("content")
+      );
+    },
+    url: `/api/likes`,
+    method: "GET"
+  });
